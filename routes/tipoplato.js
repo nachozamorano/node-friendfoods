@@ -9,7 +9,7 @@ router
         const { id } = req.body;
         try {
             const data = await database.query(
-                'SELECT tp.IdTipoPlato, tp.NombreTipo FROM restaurante res INNER JOIN plato pl ON pl.FK_IdTipoPlato = res.IdRestaurante INNER JOIN tipo_de_plato tp ON tp.IdTipoPlato = pl.FK_IdTipoPlato WHERE res.IdRestaurante = ' + id
+                'SELECT DISTINCT(tp.NombreTipo) FROM restaurante res INNER JOIN plato pl ON pl.FK_IdTipoPlato = res.IdRestaurante INNER JOIN tipo_de_plato tp ON tp.IdTipoPlato = pl.FK_IdTipoPlato WHERE res.IdRestaurante = ' + id
             )
             res.contentType('json');
             res.status(200);
