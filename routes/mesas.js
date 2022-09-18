@@ -8,7 +8,7 @@ router
     .post('/', async (req, res) => {
         const { id, code } = req.body;
         try {
-            const data = [];
+            var data = [];
             if(code == "all"){
                 data = await database.query(
                     'SELECT * FROM mesa WHERE FK_IDRestaurante ='+id
