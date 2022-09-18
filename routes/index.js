@@ -5,6 +5,6 @@ const router = express.Router();
 router
 .use('/restaurant', require('./restaurant'))
 .use('/tipoplato', require('./tipoplato'))
-.use('/tipoplato', require('./mesas'));
+.use('/mesas', require('./mesas'));
 
 module.exports = router;
