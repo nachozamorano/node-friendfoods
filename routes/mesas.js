@@ -11,15 +11,15 @@ router
             var data = [];
             if(code == "all"){
                 data = await database.query(
-                    'SELECT * FROM mesa WHERE FK_IDRestaurante ='+id
+                    'SELECT me.IdMesa, me.cantPersona, me.numero, det.nombreEstado FROM mesa me INNER JOIN estado_mesa det ON me.FK_IdEstadoMesa = det.IdEstadoMesa WHERE me.FK_IDRestaurante ='+id
                 )
             }else if(code == "free"){
                 data = await database.query(
-                    'SELECT * FROM mesa WHERE FK_IDRestaurante ='+id+' AND FK_IdEstadoMesa=1'
+                    'SELECT me.IdMesa, me.cantPersona, me.numero, det.nombreEstado FROM mesa me INNER JOIN estado_mesa det ON me.FK_IdEstadoMesa = det.IdEstadoMesa WHERE FK_IDRestaurante ='+id+' AND FK_IdEstadoMesa=1'
                 )
             }else if(code == "pend"){
                 data = await database.query(
-                    'SELECT * FROM mesa WHERE FK_IDRestaurante ='+id+' AND FK_IdEstadoMesa=2'
+                    'SELECT me.IdMesa, me.cantPersona, me.numero, det.nombreEstado FROM mesa me INNER JOIN estado_mesa det ON me.FK_IdEstadoMesa = det.IdEstadoMesa WHERE FK_IDRestaurante ='+id+' AND FK_IdEstadoMesa=2'
                 )
             }
             res.contentType('json');
