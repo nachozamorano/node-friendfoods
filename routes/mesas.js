@@ -32,5 +32,22 @@ router
             res.end('Error consultando mesas, Estas seguro que existe?');
         }
 
+    })
+    .post('/estado', async (req, res) => {
+        const { id, num } = req.body;
+        try {
+            var data = await database.query(
+                'SELECT me.FK_IdEstadoMesa FROM mesa me WHERE me.FK_IDRestaurante ='+id+' AND me.numero ='+num
+            )
+            res.contentType('json');
+            res.status(200);
+            res.json(data);
+        } catch (e) {
+            console.log(e);
+            console.error('Error consultando estado_mesa');
+            res.status(500);    
+            res.end('Error consultando estado de la mesa, Estas seguro que existe?');
+        }
+
     });
 module.exports = router;

@@ -4,12 +4,12 @@ const database = require ('../database');
 const router = express.Router();
 
 router
-    //Consultando restaurant platos con su tipo
-    .post('/', async (req, res) => {
+    //Consultando si la orden fue tomada
+    .post('/estado', async (req, res) => {
         const { id, num } = req.body;
         try {
             var data = await database.query(
-                'SELECT ord.FK_IdEstado FROM orden ord INNER JOIN mesa me ON ord.FK_IdMesa = me.IdMesa WHERE me.FK_IDRestaurante ='+id+' AND me.numero ='+num
+                'SELECT ord.FK_IdEstado FROM orden ord INNER JOIN mesa me ON ord.FK_IdMesa = me.IdMesa WHERE me.FK_IDRestaurante ='+id+' AND me.numero ='+num+' ORDER BY IdOrden DESC LIMIT 1'
             )
             res.contentType('json');
             res.status(200);

@@ -6,7 +6,6 @@ router
 .use('/restaurant', require('./restaurant'))
 .use('/tipoplato', require('./tipoplato'))
 .use('/mesas', require('./mesas'))
-.use('/estadomesa', require('./estadomesa'))
-.use('/estadoorden', require('./estadoorden'));
+.use('/orden', require('./orden'));
 
 module.exports = router;
