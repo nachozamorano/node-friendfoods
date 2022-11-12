@@ -33,6 +33,23 @@ router
         }
 
     })
+    .post('/libre', async (req, res) => {
+        const { id, num } = req.body;
+        try {
+            var data = await database.query(
+                'UPDATE mesa SET FK_IdEstadoMesa = 1 WHERE FK_IDRestaurante ='+id+' AND numero ='+num
+            )
+            res.contentType('json');
+            res.status(200);
+            res.json(data);
+        } catch (e) {
+            console.log(e);
+            console.error('Error actualizando mesa');
+            res.status(500);    
+            res.end('Error actualizando la mesa, Estas seguro que existe?');
+        }
+
+    })
     .post('/tomarPedido', async (req, res) => {
         const { id, num } = req.body;
         try {
