@@ -4,7 +4,7 @@ const database = require ('../database');
 const router = express.Router();
 
 router
-    //Consultando si la orden fue tomada
+    //Consultando estado orden
     .post('/estado', async (req, res) => {
         const { id, num } = req.body;
         try {
