@@ -4,8 +4,8 @@ const router = express.Router();
 
 router
 .use('/restaurant', require('./restaurant'))
-.use('/tipoplato', require('./tipoplato'))
-.use('/mesas', require('./mesas'))
+.use('/tipoPlato', require('./tipoPlato'))
+.use('/mesa', require('./mesa'))
 .use('/orden', require('./orden'));
 
 module.exports = router;
